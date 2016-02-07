@@ -1,0 +1,68 @@
+# Reich Phase + other samples
+# Steve Reich's Piano Phase
+# See:  https://en.wikipedia.org/wiki/Piano_Phase
+
+ewave = "~/Desktop/llu/ewave.wav"
+load_sample ewave
+
+live_loop :bg do
+  in_thread do
+    sample ewave,
+      rate: -2.1, start: 0.71, finish: rand, amp:2
+  end
+  sleep 1
+end
+
+# use_synth :square
+notes = (ring :E4, :Fs4, :B4, :Cs5, :D5, :Fs4, :E4, :Cs5, :B4, :Fs4, :D5, :Cs5)
+
+## 1
+comment {
+  live_loop :slow do
+    # use_synth :blade
+    play notes.choose, release: 2.6
+    sleep 1
+  end
+}
+
+## 2
+comment {
+  live_loop :fast do
+    # use_synth :blade
+    play notes.tick, release: 0.6
+    sleep 0.5
+  end
+}
+
+## 3
+comment {
+  live_loop :fastest do
+    # use_synth :blade
+    play notes.tick, release: 0.13
+    sleep 0.25
+  end
+}
+
+## 4
+comment {
+  live_loop :fastest do
+    # use_synth :beep
+    play notes.tick, release: 0.13
+    sleep 0.125
+  end
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
