@@ -1,0 +1,30 @@
+@font-stack: Helvetica, sans-serif;
+@primary-color: #333;
+
+body {
+  font: 500% @font-stack;
+  color: @primary-color;
+}
+
+.jumbotron {
+  z-index:1;
+  color: indianred;
+  border: dashed cyan 10px;
+  background-color: rgba(100,100,100, 0.0);
+}
+
+.gifComp {
+  margin: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+
+video {
+  display: block;
+  float: left;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+}

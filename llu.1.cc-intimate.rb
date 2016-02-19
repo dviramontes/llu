@@ -9,7 +9,7 @@
 
 notes1 = (ring :f5, :Cs5, :c5, :Gs4)
 notes2 = (ring :f5, :Gs5,:Cs5, :f5, :c5, :Ds5,:Gs4, :c5)
-notes3 = (ring :f5, :As5, :Gs5, nil, :Cs5, :Gs5, :f5, :c5, :f5, :Ds5, nil,  :Gs5, :c5)
+notes3 = (ring :f5, :As5, :Gs5, :Cs5, :Gs5, :f5, :c5, :f5, :Ds5, :Gs5, :c5)
 
 use_bpm 125
 use_synth :pulse
@@ -42,11 +42,11 @@ end
   sleep 0.5
 end
 
-32.times do
+32.times do 
   with_fx(:reverb, decay: 1) do
     with_fx(:echo, release: 2.2,  phase: 0.125, distort: 4.4) do
       play notes3.tick
     end
   end
-  sleep 0.25
+  sleep 0.35
 end
