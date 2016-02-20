@@ -3,7 +3,6 @@
 
 body {
   color: @primary-color;
-  margin: 0;
   background: black;
 }
 
@@ -17,7 +16,6 @@ body {
   //z-index: 1;
   color: #f34;
   background: none;
-  border: dashed cyan 10px;
 }
 
 .gifComp {
@@ -34,18 +32,16 @@ video {
   float: left;
   width: 100vw;
   height: 100vh;
-  object-fit: contain;
-  //object-fit: cover;
+  //object-fit: contain;
+  object-fit: cover;
   z-index: -1;
 }
 
-.clock, .countup {
+.clock, .count-up {
   z-index: 2;
 }
 
-.voices {
-}
 
 .count-up{
-  color: #f34;
+  color: cyan;
 }
