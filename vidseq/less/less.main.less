@@ -2,15 +2,21 @@
 @primary-color: #333;
 
 body {
-  font: 500% @font-stack;
+
   color: @primary-color;
+  margin: 0;
+  background: none;
+}
+
+.text-comp {
+  font: 500% @font-stack;
 }
 
 .jumbotron {
-  z-index:1;
-  color: indianred;
+  //z-index: 1;
+  color: #f34;
+  background: none;
   border: dashed cyan 10px;
-  background-color: rgba(100,100,100, 0.0);
 }
 
 .gifComp {
@@ -18,13 +24,19 @@ body {
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 0;
+  //z-index: 2;
 }
 
 video {
   display: block;
+  position: fixed;
   float: left;
   width: 100vw;
   height: 100vh;
-  object-fit: cover;
+  object-fit: contain;
+  z-index: -1;
+}
+
+.clock, .countup {
+  z-index: 2;
 }

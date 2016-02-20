@@ -9,6 +9,7 @@
                  [crisptrutski/boot-cljs-test "0.2.0-SNAPSHOT" :scope "test"]
                  [reagent "0.5.0"]
                  [cljs-ajax "0.5.3"]
+                 [cljsjs/moment "2.10.6-2"]
                  [deraen/boot-less "0.2.1" :scope "test"]])
 
 (require
