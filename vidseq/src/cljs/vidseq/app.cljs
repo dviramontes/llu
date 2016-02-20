@@ -13,7 +13,6 @@
 (defn get-random-int [min max]
       (.floor js/Math (+ min (* (- max min) (.random js/Math)))))
 
-
 (defn refresh! [q & [offset txt]]
       ;; http://api.giphy.com/v1/gifs/search?q=cat+funny&api_key=dc6zaTOxFJmzC&limit=1&offset=2
       (let [off (get-random-int 1 12)]
@@ -25,7 +24,9 @@
                                    :offset  (or offset 0)}
                  :handler         (fn [res]
                                       (reset! source-url
-                                              (:mp4 (:looping (:images (first (:data res)))))))
+                                              ;; (:mp4 (:looping (:images (first (:data res)))))
+                                              (:url (:original (:images (first (:data res)))))
+                                              ))
                  :response-format :json
                  :keywords?       true})))
 
@@ -83,16 +84,13 @@
 (defn gif-comp []
       [:div.row.gifComp
        [:div.col-lg-12
-        [:video {:autoPlay true
-                 :loop     true
-                 :src      @source-url}]]])
+        [:img {:src @source-url}]]])
 
 (defn audio-comp []
       [:div.row.audio-tag
        [:div.col-lg-12
         [:audio {:src      "media/needings.wav"
                  :id       "audio-el"
-                 ;; :controls "controls"
                  :autoPlay false}]]])
 
 (defn play-btn []
