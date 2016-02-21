@@ -13,22 +13,29 @@
 (defn get-random-int [min max]
       (.floor js/Math (+ min (* (- max min) (.random js/Math)))))
 
-(defn refresh! [q & [offset txt]]
-      ;; http://api.giphy.com/v1/gifs/search?q=cat+funny&api_key=dc6zaTOxFJmzC&limit=1&offset=2
-      (let [off (get-random-int 1 12)]
-           (if txt (reset! voice-1 txt))
-           (GET "http://api.giphy.com/v1/gifs/search"
-                {:params          {:q       q
-                                   :api_key "dc6zaTOxFJmzC"
-                                   :limit   1
-                                   :offset  (or offset 0)}
-                 :handler         (fn [res]
-                                      (reset! source-url
-                                              ;; (:mp4 (:looping (:images (first (:data res)))))
-                                              (:url (:original (:images (first (:data res)))))
-                                              ))
-                 :response-format :json
-                 :keywords?       true})))
+(defn refresh!
+      "get random robot+fail gif"
+      ([]
+        (GET "http://api.giphy.com/v1/gifs/random"
+             {:params          {:api_key "dc6zaTOxFJmzC"
+                                :tag     "robot+fail"}
+              :handler         #(reset! source-url
+                                        (:image_original_url (:data %)))
+              :response-format :json
+              :keywords?       true}))
+      ([q & [offset txt]]
+        (let [off (get-random-int 1 12)]
+             (if txt (reset! voice-1 txt))
+             (GET "http://api.giphy.com/v1/gifs/search"
+                  {:params          {:q       q
+                                     :api_key "dc6zaTOxFJmzC"
+                                     :limit   1
+                                     :offset  (or offset 0)}
+                   :handler         #(reset! source-url
+                                             ;; (:mp4 (:looping (:images (first (:data res))))) ;; video-loop
+                                             (:url (:original (:images (first (:data %))))))
+                   :response-format :json
+                   :keywords?       true}))))
 
 (add-watch duration :duration-watcher
            (fn [_ _ _ t]
@@ -72,7 +79,9 @@
                      164 (refresh! "god")
                      168 (refresh! "job+robot" 12)
                      182 (refresh! "matrix+funny" 1)
-                     200 (refresh! "matrix+funny" 2)
+                     184 (refresh! "matrix+funny" 5)
+                     186 (refresh! "matrix+funny" 7)
+                     200 (refresh! "matrix+funny" 3)
                      "default")))
 
 
