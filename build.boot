@@ -29,7 +29,7 @@
         (sift   :move {#"less.css" "css/less.css" #"less.main.css.map" "css/less.main.css.map"})))
 
 (deftask run []
-  (comp (serve)
+  (comp (serve :port 5000)
         (watch)
         (cljs-repl)
         (reload)
