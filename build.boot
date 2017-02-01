@@ -10,7 +10,8 @@
                  [reagent "0.5.0"]
                  [cljs-ajax "0.5.3"]
                  [cljsjs/moment "2.10.6-2"]
-                 [deraen/boot-less "0.2.1" :scope "test"]])
+                 [deraen/boot-less "0.2.1" :scope "test"]
+                 [cljsjs/rx "4.0.7-0"]])
 
 (require
  '[adzerk.boot-cljs      :refer [cljs]]
